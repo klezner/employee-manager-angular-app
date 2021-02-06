@@ -11,8 +11,9 @@ import { HttpErrorResponse} from '@angular/common/http';
 export class AppComponent implements OnInit {
   public employees: Employee[];
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService){}
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     this.getEmployees();
   }
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(
       (response: Employee[]) => {
         this.employees = response;
+        console.log(this.employees);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
